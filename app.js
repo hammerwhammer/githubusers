@@ -16,8 +16,9 @@ const createCard = (data) => `
   <div>
 		test
   </div>
+  const card = createCard(data)
 `
 
-const card = createCard(data)
+
 
 
