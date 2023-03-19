@@ -1,3 +1,4 @@
+const usernames = []
 console.log("Hello, World!");
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form")
@@ -9,15 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json()
         console.log(data)
     })
-    
-    const createCard = (data) => `
+})
+
+const createCard = (data) => `
   <div>
 		test
   </div>
 `
 
-const card = createCard(data)
-document.querySelector("#containter").insertAdjacentHTML("beforeend", card)
-
-})
 
