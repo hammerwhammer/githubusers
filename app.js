@@ -5,9 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault()
         const username = document.querySelector("input").value
         
-        const response = fetch(`https://api.github.com/users/${username}`)
+        const response = await fetch(`https://api.github.com/users/${username}`)
         const data = await response.json()
         console.log(data)
     })
     
 })
+
