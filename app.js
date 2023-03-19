@@ -12,3 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
 })
 
+const createCard = (data) => `
+  <div>
+		test
+  </div>
+`
+
+const card = createCard(data)
+document.querySelector("#containter").insertAdjacentHTML("beforeend", card)
