@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form")
     form.addEventListener("submit", (event) => {
         event.preventDefault()
-        alert("Pressed button!")
+        const username = document.querySelector("input").value
+        alert(username)
     })
     
 })
