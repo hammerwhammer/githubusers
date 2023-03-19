@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 })
 
-const createCard = (data) => `
+
 const createCard = (data) => `
   <div class="px-4 py-5 sm:px-6 -ml-4 -mt-4 border-b border-gray-200 pb-8 flex justify-between items-center flex-wrap sm:flex-no-wrap">
     <div class="ml-4 mt-4">
