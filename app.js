@@ -1,19 +1,33 @@
 const usernames = []
-console.log("Hello, World!");
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form")
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault()
-        const username = document.querySelector("input").value
-        
-        const response = await fetch(`https://api.github.com/users/${username}`)
-        const data = await response.json()
-        console.log(data)
-    })
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form')
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    const username = document.querySelector('input').value
+
+    if (usernames.includes(username)) {
+      alert('You already searched for this')
+      return
+    }
+
+    usernames.push(username)
+
+    const response = await fetch(`https://api.github.com/users/${username}`)
+
+    if (response.status === 200) {
+      const data = await response.json()
+      const card = createCard(data)
+      document.querySelector('#container').insertAdjacentHTML('beforeend', card)
+      document.querySelector('input').value = ''
+    } else {
+      alert('Username not found')
+    }
+  })
 })
 
 const createCard = (data) => `
-  <div class="px-4 py-5 sm:px-6 -ml-4 -mt-4 border-b border-gray-200 pb-8 flex justify-between items-center flex-wrap sm:flex-no-wrap">
+  <div class="px-4 py-5 sm:px-6 -ml-4 -mt-4 border-b border-gray-200 pb-8 flex justify-between items-center">
     <div class="ml-4 mt-4">
       <div class="flex items-center">
         <div class="flex-shrink-0">
@@ -32,7 +46,7 @@ const createCard = (data) => `
             } repositories. User since ${data.created_at.slice(0, 4)}
           </p>
           <p class="text-sm leading-5 text-gray-500">
-            ${data.location || ""}
+            ${data.location || ''}
           </p>
           <p class="mt-1 text-sm leading-5 text-gray-500">
             ${data.bio}
@@ -62,6 +76,3 @@ const createCard = (data) => `
     </div>
   </div>
 `
-
-
-
