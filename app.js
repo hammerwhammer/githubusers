@@ -63,6 +63,3 @@ const createCard = (data) => `
     </div>
   </div>
 `
-
-
-
